@@ -12,9 +12,8 @@ const NavBar: React.FC = () => {
   const currentUser = session?.user?.email;
   const role = session?.user?.role;
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="/">Next.js Application Template</Navbar.Brand>
+<Navbar bg="dark" data-bs-theme="dark" expand="lg">      <Container>
+        <Navbar.Brand href="/">digits</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
