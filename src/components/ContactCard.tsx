@@ -2,10 +2,11 @@
 'use client';
 
 import { Card, Image } from 'react-bootstrap';
+import Link from 'next/link';
 import type { Contact } from '@/lib/validationSchemas';
 
 /** Render a single contact card on the List Contacts page. */
-const ContactCard = ({ contact }: { contact: Contact }) => (
+const ContactCard = ({ contact }: { contact: Contact & { id: number } }) => (
   <Card className="h-100">
     <Card.Header>
       <Image
@@ -24,6 +25,9 @@ const ContactCard = ({ contact }: { contact: Contact }) => (
       </Card.Subtitle>
       <Card.Text>{contact.description}</Card.Text>
     </Card.Body>
+    <Card.Footer>
+      <Link href={`edit/${contact.id}`}>Edit</Link>
+    </Card.Footer>
   </Card>
 );
 
