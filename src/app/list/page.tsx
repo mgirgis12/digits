@@ -1,7 +1,6 @@
 
 import { Col, Container, Row } from 'react-bootstrap';
 import { prisma } from '@/lib/prisma';
-// import StuffItem from '@/components/StuffItem';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import { auth } from '@/lib/auth';
 import ContactCard from '@/components/ContactCard';
@@ -26,7 +25,6 @@ const ListPage = async () => {
       owner,
     },
   });
-  // console.log(stuff);
   return (
     <main>
       <Container id="list" fluid className="py-3">
