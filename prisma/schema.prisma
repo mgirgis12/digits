@@ -1,61 +1,62 @@
 
-  // This is your Prisma schema file,
-  // learn more about it in the docs: https://pris.ly/d/prisma-schema
+ // This is your Prisma schema file,
+ // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-  // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-  // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+ // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+ // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-  generator client {
-    provider = "prisma-client-js"
-  }
+ generator client {
+   provider = "prisma-client-js"
+ }
 
-  datasource db {
-    provider = "postgresql"
-  }
+ datasource db {
+   provider = "postgresql"
+ }
 
-  enum Role {
-    USER
-    ADMIN
-  }
+ enum Role {
+   USER
+   ADMIN
+ }
 
-  model User {
-    id       Int    @id @default(autoincrement())
-    email    String @unique
-    password String
-    role     Role   @default(USER)
-  }
+ model User {
+   id       Int    @id @default(autoincrement())
+   email    String @unique
+   password String
+   role     Role   @default(USER)
+ }
 
-  enum Condition {
-    excellent
-    good
-    fair
-    poor
-  }
+ enum Condition {
+   excellent
+   good
+   fair
+   poor
+ }
 
-  model Stuff {
-    id        Int       @id @default(autoincrement())
-    name      String
-    quantity  Int
-    condition Condition @default(good)
-    owner     String
-  }
-  // Store contact information for each user.
-  model Contact {
-    id          Int    @id @default(autoincrement())
-    firstName   String
-    lastName    String
-    address     String
-    image       String
-    description String
-    notes       Note[]
-    owner       String
-  }
+ model Stuff {
+   id        Int       @id @default(autoincrement())
+   name      String
+   quantity  Int
+   condition Condition @default(good)
+   owner     String
+ }
 
-  model Note {
-    id        Int      @id @default(autoincrement())
-    contactId Int
-    note      String
-    owner     String
-    createdAt DateTime @default(now())
-    Contact   Contact  @relation(fields: [contactId], references: [id])
-  }
+ // Store contact information for each user.
+ model Contact {
+   id          Int    @id @default(autoincrement())
+   firstName   String
+   lastName    String
+   address     String
+   image       String
+   description String
+   notes       Note[]
+   owner       String
+ }
+
+ model Note {
+   id        Int      @id @default(autoincrement())
+   contactId Int
+   note      String
+   owner     String
+   createdAt DateTime @default(now())
+   Contact   Contact  @relation(fields: [contactId], references: [id])
+ }
